@@ -14,5 +14,5 @@ Quiero agradecer a Kacper Jasinski y a J.P por ayudarme con el testeo de la pagi
 Autor
 Iván Brito Pérez
 
-Página de GitHub de referencia.
+Página de Dribble de referencia.
 https://dribbble.com/shots/24117105-Andromeda-Star-tracker-Website
