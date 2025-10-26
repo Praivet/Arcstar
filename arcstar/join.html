@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Join Us</title>
+
+<style>
+
+  @font-face {
+    font-family: 'CreatoDisplay';
+    src: url('./CreatoDisplay.otf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'ChettaVissto';
+    src: url('./ChettaVissto.ttf') format('truetype');
+  }
+
+
+  body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle at center, #0a0a18 0%, #050510 100%);
+    font-family: 'Arial', sans-serif;
+    color: white;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 80px;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 10;
+    gap: 50px;
+  }
+
+  .logo {
+    width: 200px;
+    height: 150px;
+    background-image: url('./assests/logotipo.webp');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left center;
+    flex-shrink: 0;
+  }
+
+    nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0px;
+    padding: 3px 3px;
+    background: rgba(10, 10, 25, 0.6);
+    border: 1px solid rgba(61, 106, 255, 0.3);
+    border-radius: 100px;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    transform: translateX(-40px);
+    z-index: 11;
+  }
+
+  nav a {
+    position: relative;
+    padding: 10px 50px;
+    border-radius: 100px;
+    font-family: 'CreatoDisplay', Arial, sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 2px;
+    background: transparent;
+    color: #ffffff;
+    overflow: hidden;
+    text-decoration: none;
+    transition: all 0.5s ease-in;
+    white-space: nowrap;
+  }
+
+  nav a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(145, 224, 255, 0.2);
+    transform: skewX(-20deg);
+    pointer-events: none;
+  }
+
+  nav a:hover::before {
+    animation: shimmer 0.5s linear;
+  }
+
+  nav a:hover {
+    background: rgb(61, 106, 255);
+    box-shadow: 0 0 30px 5px rgba(0, 142, 236, 0.815);
+  }
+
+  @keyframes shimmer {
+    0% { left: -100%; opacity: 0; }
+    50% { left: 0%; opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+  }
+
+  .slogan {
+    font-family: 'CreatoDisplay', Arial, sans-serif;
+    font-style: italic;
+    font-size: 20px;
+    white-space: nowrap;
+    color: #fff;
+    letter-spacing: 0.8px;
+  }
+
+  .special {
+    font-family: 'ChettaVissto', sans-serif;
+    color: #00caff;
+    font-size: 40px;
+    font-style: italic;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-shadow: 0 0 80px #00caff, 0 0 25px #00caff;
+  }
+
+  .join-content {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 5;
+    width: 90%;
+    max-width: 900px;
+  }
+
+  .join-title {
+    font-family: 'ChettaVissto', sans-serif;
+    font-size: 80px;
+    color: #00caff;
+    text-shadow: 0 0 50px rgba(0, 150, 255, 0.6);
+    margin-bottom: 20px;
+  }
+
+  .join-text {
+    font-family: 'CreatoDisplay', sans-serif;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 700px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+  }
+
+  .join-button {
+    font-family: 'CreatoDisplay', sans-serif;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: #00caff;
+    color: #050510;
+    padding: 15px 50px;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    font-weight: 900;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 25px rgba(0, 202, 255, 0.4);
+  }
+
+  .join-button:hover {
+    background: #0096cc;
+    box-shadow: 0 0 50px rgba(0, 202, 255, 0.7);
+    transform: scale(1.05);
+  }
+
+  /* === LOGO STRIP === */
+  .logo-strip {
+    position: absolute;
+    bottom: 8%;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.8;
+  }
+
+  .logo-track {
+    display: flex;
+    gap: 100px;
+    animation: scrollLogos 25s linear infinite;
+  }
+
+  .logo-track img {
+    height: 80px;
+    width: auto;
+    filter: brightness(0.9);
+    opacity: 0.9;
+    transition: all 0.3s ease;
+  }
+
+  .logo-track img:hover {
+    filter: drop-shadow(0 0 20px #00caff) brightness(1.2);
+    opacity: 1;
+    transform: scale(1.05);
+  }
+
+  @keyframes scrollLogos {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @media (min-width: 1024px) {
+    .join-title { font-size: 80px; }
+    .join-text { font-size: 18px; }
+    nav a { font-size: 12px; padding: 10px 50px; }
+  }
+
+  @media (max-width: 1023px) and (min-width: 768px) {
+    .topbar {
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      gap: 20px;
+    }
+    .logo { transform: none; height: 120px; }
+    .slogan { font-size: 18px; }
+    nav a { font-size: 11px; padding: 10px 35px; }
+    .join-title { font-size: 60px; }
+    .join-text { font-size: 16px; width: 85%; }
+    .logo-track img { height: 60px; }
+  }
+
+  @media (max-width: 767px) {
+    body { overflow-y: auto; }
+    .topbar {
+      flex-direction: column;
+      padding: 15px 10px;
+      gap: 15px;
+    }
+    .logo { width: 150px; height: 100px; }
+    nav {
+      flex-wrap: wrap;
+      border-radius: 20px;
+      padding: 5px 10px;
+      gap: 5px;
+    }
+    nav a {
+      padding: 8px 20px;
+      font-size: 10px;
+    }
+    .slogan {
+      font-size: 14px;
+      text-align: center;
+    }
+    .special { font-size: 24px; }
+    .join-content {
+      position: relative;
+      top: auto;
+      left: auto;
+      transform: none;
+      margin-top: 40px;
+    }
+    .join-title {
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
+    .join-text {
+      font-size: 14px;
+      width: 90%;
+    }
+    .join-button {
+      padding: 12px 35px;
+      font-size: 12px;
+    }
+    .logo-strip {
+      position: relative;
+      bottom: 0;
+      margin-top: 40px;
+      height: 80px;
+    }
+    .logo-track {
+      gap: 60px;
+      animation: scrollLogos 18s linear infinite;
+    }
+    .logo-track img { height: 45px; }
+  }
+</style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="logo"></div>
+    <nav>
+      <a href="index.html">home</a>
+      <a href="about.html">about</a>
+      <a href="arctracker.html">arctracker</a>
+      <a href="contact.html">contact</a>
+      <a href="join.html" class="active">join us</a>
+    </nav>
+    <div class="slogan">
+      <span>Reach for the <span class="special">Stars</span></span>
+    </div>
+  </div>
+
+  <div class="join-content">
+    <h1 class="join-title">Join the Crew</h1>
+    <p class="join-text">
+      Be part of Arcstar, a community that looks beyond the horizon. 
+      We’re looking for curious minds, explorers, and dreamers ready to conquer the cosmos with us. 
+      Send your application and take the first step toward the stars.
+    </p>
+    <button class="join-button">Join Us</button>
+  </div>
+
+  <div class="logo-strip">
+    <div class="logo-track">
+      <img src="./assests/logolargo.webp" alt="Logo largo">
+      <img src="./assests/lgv.webp" alt="LGV">
+      <img src="./assests/spacex.webp" alt="SpaceX">
+      <img src="./assests/verxe.webp" alt="Verxe">
+      <img src="./assests/logolargo.webp" alt="Logo largo">
+      <img src="./assests/lgv.webp" alt="LGV">
+      <img src="./assests/spacex.webp" alt="SpaceX">
+      <img src="./assests/verxe.webp" alt="Verxe">
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Arctracker</title>
+
+<style>
+  @font-face {
+    font-family: 'CreatoDisplay';
+    src: url('./CreatoDisplay.otf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'ChettaVissto';
+    src: url('./ChettaVissto.ttf') format('truetype');
+  }
+
+  body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle at center, #0a0a18 0%, #050510 100%);
+    font-family: 'Arial', sans-serif;
+    color: white;
+    overflow: hidden;
+    position: relative;
+  }
+
+  
+  .stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0;
+    animation: twinkle 3s ease-in-out infinite;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: 1; transform: scale(1.2); }
+  }
+
+  /* === TOPBAR === */
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5vw;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    top: 0;
+    z-index: 10;
+    flex-wrap: wrap;
+  }
+
+  .logo {
+    width: 12vw;
+    max-width: 200px;
+    min-width: 120px;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    background-image: url('./assests/logotipo.webp');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left center;
+  }
+
+    nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0px;
+    padding: 3px 3px;
+    background: rgba(10, 10, 25, 0.6);
+    border: 1px solid rgba(61, 106, 255, 0.3);
+    border-radius: 100px;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    transform: translateX(-40px);
+    z-index: 11;
+  }
+
+  nav a {
+    position: relative;
+    padding: 10px 50px;
+    border-radius: 100px;
+    font-family: 'CreatoDisplay', Arial, sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 2px;
+    background: transparent;
+    color: #ffffff;
+    overflow: hidden;
+    text-decoration: none;
+    transition: all 0.5s ease-in;
+    white-space: nowrap;
+  }
+
+  nav a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(145, 224, 255, 0.2);
+    transform: skewX(-20deg);
+    pointer-events: none;
+  }
+
+  nav a:hover::before {
+    animation: shimmer 0.5s linear;
+  }
+
+  nav a:hover {
+    background: rgb(61, 106, 255);
+    box-shadow: 0 0 30px 5px rgba(0, 142, 236, 0.815);
+  }
+
+  @keyframes shimmer {
+    0% { left: -100%; opacity: 0; }
+    50% { left: 0%; opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+  }
+
+  .slogan {
+    font-family: 'CreatoDisplay', Arial, sans-serif;
+    font-style: italic;
+    font-size: clamp(14px, 2vw, 20px);
+    white-space: nowrap;
+    color: #fff;
+    letter-spacing: 0.8px;
+  }
+
+  .special {
+    font-family: 'ChettaVissto', sans-serif;
+    color: #00caff;
+    font-size: clamp(20px, 3vw, 40px);
+    font-style: italic;
+    font-weight: 600;
+    text-shadow: 0 0 40px #00caff;
+  }
+
+
+  .main-content {
+    position: relative;
+    z-index: 5;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 90%;
+    max-width: 800px;
+  }
+
+  .main-title {
+    font-family: 'ChettaVissto', sans-serif;
+    font-style: italic;
+    font-size: clamp(40px, 8vw, 80px);
+    color: #00caff;
+    text-shadow: 0 0 50px rgba(0, 150, 255, 0.6);
+    margin-bottom: 20px;
+  }
+
+  .main-text {
+    font-family: 'CreatoDisplay', sans-serif;
+    font-size: clamp(14px, 2vw, 18px);
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+
+  .mountain {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 50vw;
+    max-width: 800px;
+    min-width: 300px;
+    height: auto;
+    object-fit: cover;
+    z-index: 2;
+    pointer-events: none;
+    user-select: none;
+  }
+
+
+  @media (max-width: 1024px) {
+    .main-content {
+      top: 38%;
+    }
+    .mountain {
+      width: 55vw;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .topbar {
+      flex-direction: column;
+      gap: 10px;
+      padding: 20px 0;
+    }
+    nav {
+      order: 3;
+    }
+    .main-content {
+      top: 42%;
+    }
+    .mountain {
+      width: 65vw;
+      bottom: -2%;
+      right: -5%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .main-content {
+      top: 45%;
+      width: 90%;
+    }
+    .main-title {
+      font-size: clamp(36px, 10vw, 60px);
+    }
+    .main-text {
+      font-size: 14px;
+    }
+    nav a {
+      padding: 8px 20px;
+    }
+    .mountain {
+      width: 80vw;
+      bottom: -5%;
+      right: -10%;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+  <div class="stars" id="stars"></div>
+
+
+  <div class="topbar">
+    <div class="logo"></div>
+    <nav>
+      <a href="index.html">home</a>
+      <a href="about.html">about</a>
+      <a href="arctracker.html" class="active">arctracker</a>
+      <a href="contact.html">contact</a>
+      <a href="join.html">join us</a>
+    </nav>
+    <div class="slogan">
+      <span>Reach for the <span class="special">Stars</span></span>
+    </div>
+  </div>
+
+
+  <div class="main-content">
+    <h1 class="main-title">ArcTracker</h1>
+    <p class="main-text">
+      Soon our new star tracking app
+    </p>
+  </div>
+
+
+  <img src="./assests/montaña.webp" alt="Montaña" class="mountain">
+
+  
+  <script> /*funcion matematica para que aparezcan puntos randoms en la pantalla simulando estrellas y al igual que antes este tuve que tener apoyo de chatgpt por que no me funciono en un momento*/
+    const starsContainer = document.getElementById('stars');
+    const numStars = 150;
+
+    for (let i = 0; i < numStars; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+
+      // Posición aleatoria
+      star.style.top = Math.random() * 100 + '%';
+      star.style.left = Math.random() * 100 + '%';
+
+      // Tamaño aleatorio
+      const size = Math.random() * 2 + 1;
+      star.style.width = size + 'px';
+      star.style.height = size + 'px';
+
+      // Duración y retraso de parpadeo aleatorio
+      const duration = Math.random() * 3 + 2;
+      const delay = Math.random() * 5;
+      star.style.animationDuration = duration + 's';
+      star.style.animationDelay = delay + 's';
+
+      starsContainer.appendChild(star);
+    }
+  </script>
+</body>
+</html>

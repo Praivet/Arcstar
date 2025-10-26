@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>home</title>
+<style>
+  @font-face {
+    font-family: 'CreatoDisplay';
+    src: url('./CreatoDisplay.otf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'ChettaVissto';
+    src: url('./ChettaVissto.ttf') format('truetype');
+  }
+  /*Cuerpo de la pagina web*/
+  body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle at center, #0a0a18 0%, #050510 100%);
+    font-family: 'Arial', sans-serif;
+    color: white;
+    overflow: hidden;
+  }
+  /*imagen de una estrella que sirve como "background"*/
+  .star-fixed {
+    position: absolute; 
+    top: 50%;
+    left: 50%;
+    width: 120vw;
+    height: 120vh;
+    transform: translate(-50%, -50%);
+    background: url('./assests/logofx.webp') center center / cover no-repeat;
+    pointer-events: none;
+    z-index: 0;
+  }
+  /*barra superior de la parte de arriba*/
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 80px;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    top: 0;
+    z-index: 10;
+    gap: 50px;
+  }
+  /*Logo de la parte superior de la izquierda*/
+  .logo {
+    width: 200px;
+    height: 150px;
+    background-image: url('./assests/logotipo.webp');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left center;
+    flex-shrink: 0;
+    transform: translateX(-40px);
+  }
+  /*es lo que es mas grande que el topbar ya que este tiene un efecto de glow*/
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0px;
+    padding: 3px 3px;
+    background: rgba(10, 10, 25, 0.6);
+    border: 1px solid rgba(61, 106, 255, 0.3);
+    border-radius: 100px;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    transform: translateX(-40px);
+    z-index: 11;
+  }
+
+  nav a {
+    position: relative;
+    padding: 10px 50px;
+    border-radius: 100px;
+    font-family: 'CreatoDisplay', Arial, sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 2px;
+    background: transparent;
+    color: #ffffff;
+    overflow: hidden;
+    text-decoration: none;
+    transition: all 0.5s ease-in;
+    white-space: nowrap;
+  }
+
+  nav a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(145, 224, 255, 0.2);
+    transform: skewX(-20deg);
+    pointer-events: none;
+  }
+
+  nav a:hover::before {
+    animation: shimmer 0.5s linear;
+  }
+
+  nav a:hover {
+    background: rgb(61, 106, 255);
+    box-shadow: 0 0 30px 5px rgba(0, 142, 236, 0.815);
+  }
+
+  @keyframes shimmer {
+    0% { left: -100%; opacity: 0; }
+    50% { left: 0%; opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+  }
+ 
+  .slogan {
+    position: relative;
+    font-family: 'CreatoDisplay', Arial, sans-serif;
+    font-style: italic;
+    font-size: 20px;
+    white-space: nowrap;
+    color: #fff;
+    letter-spacing: 0.8px;
+    transform: translateX(var(--slogan-shift));
+    transition: transform 0.18s ease;
+    z-index: 11;
+  }
+
+  :root {
+    --slogan-shift: -60px;
+  }
+
+  .special {
+    font-family: 'ChettaVissto', sans-serif;
+    color: #00caff;
+    font-size: 40px;
+    font-style: italic;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-shadow: 0 0 80px #00caff, 0 0 25px #00caff;
+  }
+
+  /*Texto de los circulos que se mueven*/
+  .text-circle {
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    pointer-events: none;
+    z-index: 1;
+    animation: spin 70s linear infinite;
+    opacity: 0.85;
+  }
+
+  .top-left {
+    top: -150px;
+    left: -150px;
+    animation-direction: reverse;
+  }
+
+  .bottom-right {
+    bottom: -150px;
+    right: -150px;
+  }
+  /*el efecto, estilo y fuente que tiene el circulo sobre todo para la fuente de las palabras*/
+  .orbit-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-family: 'ChettaVissto', serif;
+    font-size: 22px;
+    letter-spacing: 3px;
+    background: linear-gradient(90deg, #00caff, #4f86ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 10px rgba(0, 150, 255, 0.3);
+    transform-origin: center center;
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .footer { /*aqui esto es el "footer" tiburcio pero no me dio tiempo a hacerlo bien ya que antes era una caja en medio de la pagina para dividir la portada de la web con la informacion*/
+    content: "";
+    position: fixed;
+    bottom: -160px;
+    left: 0;
+    width: 100%;
+    height: 180px;
+    background: linear-gradient(180deg, rgb(0, 21, 58), rgb(2, 10, 33));
+    border-top: 1px solid rgba(0, 150, 255, 0.3);
+    border-bottom: 1px solid rgba(0, 150, 255, 0.3);
+    box-shadow: 0 0 25px 5px rgba(0, 150, 255, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 80px;
+    box-sizing: border-box;
+    animation: fadeIn 2s ease forwards;
+    z-index: 3;
+  }
+
+  .footer::before {   
+    position: absolute;
+    top: 0;
+    left: -200px;
+    width: 500px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00caff, transparent);
+    animation: lightSweep 1.5s linear infinite;
+  }
+
+  @keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes lightSweep {
+    0% { left: -200px; opacity: 0; }
+    50% { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+  }
+
+  @media (max-width: 900px) {
+    .logo, .slogan, .special { display: none; }
+    nav {
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+      gap: 10px;
+      padding: 10px 0;
+      border-radius: 20px;
+      background: rgba(10, 10, 25, 0.8);
+      transform: none;
+    }
+    nav a { font-size: 14px; padding: 12px 18px; }
+    .text-circle { display: none; }
+  }
+</style>
+</head>
+
+<body>
+  <div class="star-fixed"></div>
+
+  <div class="topbar">
+    <div class="logo"></div>
+    <nav>
+  <a href="index.html">home</a>
+  <a href="about.html">about</a>
+  <a href="arctracker.html">arctracker</a>
+  <a href="contact.html">contact</a>
+  <a href="join.html">join us</a>
+</nav>
+
+    <div class="slogan">
+      <span>Reach for the <span class="special">Stars</span></span>
+    </div>
+  </div>
+
+  
+  <div class="text-circle top-left" id="circle1"></div>
+  <div class="text-circle bottom-right" id="circle2"></div>
+
+  <div class="footer"></div>
+  
+  <script> /*el java script de los circulos que se mueven, admito que me ayudo un poco chatgpt con esta parte y estoy aprendiendo a ver como se hace para en un futuro saber utilizarlo bien*/
+    const text1 = "andromeda. tauro. osa mayor. draco. orion. forna. casiopea. perseo. sirius. arcturus. eleo."; 
+    const text2 = "lyra. pegasus. auriga. hercules. leo. hydra. cygnus. corona borealis. phoenix. vyse. hadaris.";
+
+    function createOrbitText(circleId, text, reverse = false) {
+      const container = document.getElementById(circleId);
+      const radius = 280;
+      const chars = text.split("");
+      chars.forEach((char, i) => {
+        const span = document.createElement("span");
+        span.classList.add("orbit-text");
+        span.textContent = char;
+
+        const angle = (i / chars.length) * 2 * Math.PI;
+        const x = Math.cos(angle) * radius;
+        const y = Math.sin(angle) * radius;
+
+        const rotate = (angle * 180 / Math.PI) + (reverse ? 90 : -90);
+
+        span.style.transform = `translate(${x}px, ${y}px) rotate(${rotate}deg)`;
+        container.appendChild(span);
+      });
+    }
+
+    createOrbitText("circle1", text1, true);
+    createOrbitText("circle2", text2, false);
+  </script>
+</body>
+</html>
+  

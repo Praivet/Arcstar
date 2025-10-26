@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>About</title>
+
+<style>
+  @font-face {
+    font-family: 'CreatoDisplay';
+    src: url('./CreatoDisplay.otf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'ChettaVissto';
+    src: url('./ChettaVissto.ttf') format('truetype');
+  }
+
+  body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle at center, #0a0a18 0%, #050510 100%);
+    font-family: 'Arial', sans-serif;
+    color: white;
+    overflow: hidden;
+    position: relative;
+  }
+
+  
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5vw;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    top: 0;
+    z-index: 10;
+    flex-wrap: wrap;
+  }
+
+  .logo {
+    width: 12vw;
+    max-width: 200px;
+    min-width: 120px;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    background-image: url('./assests/logotipo.webp');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left center;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 5px 10px;
+    background: rgba(10, 10, 25, 0.6);
+    border: 1px solid rgba(61, 106, 255, 0.3);
+    border-radius: 100px;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0px;
+    padding: 3px 3px;
+    background: rgba(10, 10, 25, 0.6);
+    border: 1px solid rgba(61, 106, 255, 0.3);
+    border-radius: 100px;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    transform: translateX(-40px);
+    z-index: 11;
+  }
+
+  nav a {
+    position: relative;
+    padding: 10px 50px;
+    border-radius: 100px;
+    font-family: 'CreatoDisplay', Arial, sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 2px;
+    background: transparent;
+    color: #ffffff;
+    overflow: hidden;
+    text-decoration: none;
+    transition: all 0.5s ease-in;
+    white-space: nowrap;
+  }
+
+  nav a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(145, 224, 255, 0.2);
+    transform: skewX(-20deg);
+    pointer-events: none;
+  }
+
+  nav a:hover::before {
+    animation: shimmer 0.5s linear;
+  }
+
+  nav a:hover {
+    background: rgb(61, 106, 255);
+    box-shadow: 0 0 30px 5px rgba(0, 142, 236, 0.815);
+  }
+
+  @keyframes shimmer {
+    0% { left: -100%; opacity: 0; }
+    50% { left: 0%; opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+  }
+
+  .slogan {
+    font-family: 'CreatoDisplay', Arial, sans-serif;
+    font-style: italic;
+    font-size: clamp(14px, 2vw, 20px);
+    white-space: nowrap;
+    color: #fff;
+    letter-spacing: 0.8px;
+  }
+
+  .special {
+    font-family: 'ChettaVissto', sans-serif;
+    color: #00caff;
+    font-size: clamp(20px, 3vw, 40px);
+    font-style: italic;
+    font-weight: 600;
+    text-shadow: 0 0 40px #00caff;
+  }
+
+
+  .about-section {
+    position: absolute;
+    top: 50%;
+    left: 8%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 5;
+    max-width: 90%;
+  }
+
+  .about-title {
+    font-family: 'ChettaVissto', sans-serif;
+    font-size: clamp(40px, 8vw, 80px);
+    color: #00caff;
+    text-shadow: 0 0 40px rgba(0, 150, 255, 0.6);
+    margin: 0;
+    line-height: 1.1;
+    max-width: 1000px;
+  }
+
+  .about-text {
+    margin-top: 30px;
+    font-family: 'CreatoDisplay', sans-serif;
+    font-size: clamp(14px, 2vw, 18px);
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 600px;
+  }
+
+
+  .planet-img {
+    position: fixed;
+    bottom: -10%;
+    right: -10%;
+    width: 45vw;
+    max-width: 800px;
+    min-width: 300px;
+    height: auto;
+    opacity: 0.9;
+    z-index: 1;
+    pointer-events: none;
+    animation: floatPlanet 12s ease-in-out infinite, spinPlanet 80s linear infinite;
+    filter: drop-shadow(0 0 60px rgba(0, 170, 255, 0.4));
+  }
+
+  @keyframes floatPlanet {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+  }
+
+  @keyframes spinPlanet {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 1024px) {
+    .about-section {
+      left: 6%;
+      top: 48%;
+    }
+    .about-text {
+      max-width: 500px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .topbar {
+      flex-direction: column;
+      gap: 10px;
+    }
+    .slogan {
+      order: 3;
+      font-size: clamp(12px, 3vw, 18px);
+    }
+    .about-section {
+      left: 5%;
+      top: 55%;
+      transform: translateY(-50%);
+    }
+    .planet-img {
+      width: 60vw;
+      bottom: -12%;
+      right: -15%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .about-section {
+      top: 55%;
+      left: 5%;
+    }
+    .about-title {
+      font-size: clamp(32px, 10vw, 60px);
+    }
+    .about-text {
+      font-size: 14px;
+      max-width: 90%;
+    }
+    nav a {
+      padding: 8px 20px;
+    }
+    .planet-img {
+      width: 75vw;
+      right: -20%;
+      bottom: -15%;
+    }
+  }
+</style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="logo"></div>
+    <nav>
+      <a href="index.html">home</a>
+      <a href="about.html" class="active">about</a>
+      <a href="arctracker.html">arctracker</a>
+      <a href="contact.html">contact</a>
+      <a href="join.html">join us</a>
+    </nav>
+    <div class="slogan">
+      <span>Reach for the <span class="special">Stars</span></span>
+    </div>
+  </div>
+
+  <section class="about-section">
+    <h1 class="about-title">About Us</h1>
+    <p class="about-text">
+      We at Arcstar believe the future belongs to those who dare to imagine it.  
+      We are a company dedicated to connecting technology, creativity, and digital exploration to build experiences that transcend the boundaries of space and the human mind.  
+      <br><br>
+      Our mission is to inspire new generations to look beyond the known, driving innovation with purpose and curiosity as the driving force.
+    </p>
+  </section>
+
+  <img src="./assests/planeta.webp" alt="Planeta" class="planet-img" />
+</body>
+</html>

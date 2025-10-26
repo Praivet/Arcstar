@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contact</title>
+
+<style>
+  @font-face {
+    font-family: 'CreatoDisplay';
+    src: url('./CreatoDisplay.otf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'ChettaVissto';
+    src: url('./ChettaVissto.ttf') format('truetype');
+  }
+
+  body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle at center, #0a0a18 0%, #050510 100%);
+    font-family: 'Arial', sans-serif;
+    color: white;
+    overflow: hidden; 
+    position: relative;
+  }
+
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5vw;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    top: 0;
+    z-index: 10;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .logo {
+    width: 12vw;
+    max-width: 200px;
+    min-width: 120px;
+    height: auto;
+    aspect-ratio: 4/3;
+    background-image: url('./assests/logotipo.webp');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left center;
+  }
+
+    nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0px;
+    padding: 3px 3px;
+    background: rgba(10, 10, 25, 0.6);
+    border: 1px solid rgba(61, 106, 255, 0.3);
+    border-radius: 100px;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    transform: translateX(-40px);
+    z-index: 11;
+  }
+
+  nav a {
+    position: relative;
+    padding: 10px 50px;
+    border-radius: 100px;
+    font-family: 'CreatoDisplay', Arial, sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 2px;
+    background: transparent;
+    color: #ffffff;
+    overflow: hidden;
+    text-decoration: none;
+    transition: all 0.5s ease-in;
+    white-space: nowrap;
+  }
+
+  nav a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(145, 224, 255, 0.2);
+    transform: skewX(-20deg);
+    pointer-events: none;
+  }
+
+  nav a:hover::before {
+    animation: shimmer 0.5s linear;
+  }
+
+  nav a:hover {
+    background: rgb(61, 106, 255);
+    box-shadow: 0 0 30px 5px rgba(0, 142, 236, 0.815);
+  }
+
+  @keyframes shimmer {
+    0% { left: -100%; opacity: 0; }
+    50% { left: 0%; opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+  }
+
+  .slogan {
+    font-family: 'CreatoDisplay', Arial, sans-serif;
+    font-style: italic;
+    font-size: clamp(14px, 2vw, 20px);
+    white-space: nowrap;
+    color: #fff;
+    letter-spacing: 0.8px;
+  }
+
+  .special {
+    font-family: 'ChettaVissto', sans-serif;
+    color: #00caff;
+    font-size: clamp(20px, 3vw, 40px);
+    font-style: italic;
+    font-weight: 600;
+    text-shadow: 0 0 40px #00caff;
+  }
+
+  .contact-container {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 900px;
+    height: 60vh;
+    background: rgba(10, 10, 25, 0.6);
+    border-top: 1px solid rgba(61, 106, 255, 0.3);
+    box-shadow: 0 0 40px rgba(0, 150, 255, 0.2);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .contact-container h1 {
+    font-family: 'ChettaVissto', sans-serif;
+    font-style: italic;
+    font-size: clamp(40px, 6vw, 60px);
+    color: #00caff;
+    margin-bottom: 30px;
+    text-shadow: 0 0 30px rgba(0, 150, 255, 0.6);
+  }
+
+  .form-fields {
+    width: 70%;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .form-fields input,
+  .form-fields textarea {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    font-family: 'CreatoDisplay', sans-serif;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+
+  .form-fields input:focus,
+  .form-fields textarea:focus {
+    box-shadow: 0 0 10px #00caff;
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .form-fields textarea {
+    resize: none;
+    height: 120px;
+  }
+
+  .contact-container button {
+    margin-top: 15px;
+    background: #00caff;
+    border: none;
+    padding: 14px 40px;
+    border-radius: 40px;
+    font-family: 'CreatoDisplay', sans-serif;
+    font-weight: 800;
+    color: #050510;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 0 20px rgba(0, 150, 255, 0.5);
+  }
+
+  .contact-container button:hover {
+    background: #3d6aff;
+    color: white;
+    box-shadow: 0 0 40px rgba(61, 106, 255, 0.8);
+  }
+
+  @media (max-width: 1024px) {
+    .contact-container {
+      height: 65vh;
+      bottom: 8%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .topbar {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 20px 0;
+    }
+    nav {
+      order: 3;
+      justify-content: center;
+    }
+    .contact-container {
+      height: auto;
+      bottom: 5%;
+      padding: 40px 0;
+      border-radius: 15px;
+    }
+    .form-fields {
+      width: 80%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .contact-container {
+      width: 95%;
+      height: auto;
+      bottom: 3%;
+      padding: 30px 0;
+    }
+    .form-fields {
+      width: 90%;
+    }
+    .form-fields input,
+    .form-fields textarea {
+      font-size: 14px;
+    }
+    .contact-container button {
+      padding: 12px 30px;
+      font-size: 13px;
+    }
+    nav a {
+      padding: 8px 20px;
+      font-size: 11px;
+    }
+  }
+</style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="logo"></div>
+    <nav>
+      <a href="index.html">home</a>
+      <a href="about.html">about</a>
+      <a href="arctracker.html">arctracker</a>
+      <a href="contact.html" class="active">contact</a>
+      <a href="join.html">join us</a>
+    </nav>
+    <div class="slogan">
+      <span>Reach for the <span class="special">Stars</span></span>
+    </div>
+  </div>
+
+
+  <div class="contact-container">
+    <h1>Contact Us</h1>
+    <form class="form-fields">
+      <input type="text" placeholder="Nombre" required />
+      <input type="email" placeholder="Correo electrónico" required />
+      <textarea placeholder="Escribe tu mensaje..." required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+</body>
+</html>
